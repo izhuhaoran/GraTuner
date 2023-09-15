@@ -27,17 +27,13 @@ config = {
     'parallelization': 'serial',
     'numSSG': ['fixed-vertex-count', '1'],
     'DenseVertexSet': 'boolean-array',
-    'bucket_update_strategy': 'eager_priority_update'
 }
 
-config_direction = ['SparsePush', 'DensePush', 'DensePull',
-                    'DensePull-SparsePush', 'DensePush-SparsePush']
-config_parallelization = ['serial', 'edge-aware-dynamic-vertex-parallel']
+config_direction = ['SparsePush', 'DensePush', 'DensePull', 'DensePull-SparsePush', 'DensePush-SparsePush']
+config_parallelization = ['serial', 'dynamic-vertex-parallel', 'static-vertex-parallel', 'edge-aware-dynamic-vertex-parallel']
 config_DenseVertexSet = ['bitvector', 'boolean-array']
-config_bucket_update_strategy = [
-    'eager_priority_update', 'eager_priority_update_with_merge']
-config_NUMA = ['false', 'static-parallel',
-               'static-parallel', 'dynamic-parallel']
+# config_bucket_update_strategy = ['eager_priority_update', 'eager_priority_update_with_merge']
+config_NUMA = ['false', 'static-parallel', 'dynamic-parallel']
 config_numSSG = ['fixed-vertex-count']
 
 algo_file_dir = f"{GraphitPath}/autotune/benchmarks/"
@@ -212,6 +208,14 @@ class GraphItDataCreator():
         f1.close()
         
         return 1
+    
+    def write_cfg_to_schedule_new(self, cfg):
+        new_schedule = ''
+        
+        new_schedule = new_schedule + \
+            "\n    program->configApplyDenseVertexSet(\"s1\",\"bitvector\", \"src-vertexset\", \"DensePull\");"
+        pass
+        
 
     def compile(self, cfg, algo_file_, id):
         """                                                                          
@@ -313,16 +317,16 @@ class GraphItDataCreator():
         # converts the configuration into a schedule
         returncode = self.write_cfg_to_schedule(cfg)
         
-        return None
-        # if returncode == -1:
-        #     return None
+        # return None
+        if returncode == -1:
+            return None
 
-        # # this pases in the id 0 for the configuration
-        # compile_result = self.compile(cfg, algo_file, 0)
-        # if compile_result["returncode"] != 0:
-        #     return None
-        # # print "compile_result: " + str(compile_result)
-        # return self.run_precompiled(cfg, compile_result, graph, 0)
+        # this pases in the id 0 for the configuration
+        compile_result = self.compile(cfg, algo_file, 0)
+        if compile_result["returncode"] != 0:
+            return None
+        # print "compile_result: " + str(compile_result)
+        return self.run_precompiled(cfg, compile_result, graph, 0)
 
 
 if __name__ == '__main__':
@@ -344,26 +348,26 @@ if __name__ == '__main__':
                     for DenseVertexSet_option in config_DenseVertexSet:
                         cfg['DenseVertexSet'] = DenseVertexSet_option
 
-                        for bucket_update_strategy_option in config_bucket_update_strategy:
-                            cfg['bucket_update_strategy'] = bucket_update_strategy_option
+                        # for bucket_update_strategy_option in config_bucket_update_strategy:
+                        #     cfg['bucket_update_strategy'] = bucket_update_strategy_option
 
-                            for NUMA_option in config_NUMA:
-                                cfg['NUMA'] = NUMA_option
+                        for NUMA_option in config_NUMA:
+                            cfg['NUMA'] = NUMA_option
 
-                                
-                                for i in range(1, max_num_segments+1):
-                                    cfg['numSSG'] = i
+                            
+                            for i in range(1, max_num_segments+1):
+                                cfg['numSSG'] = i
 
-                                    algo_file_path = algo_file_dir+algo_file_name
-                                    graph_file_path = graph_file_dir+graph
-                                    result_time = data_collector.compile_and_run(cfg, graph_file_path, algo_file_path)
+                                algo_file_path = algo_file_dir+algo_file_name
+                                graph_file_path = graph_file_dir+graph
+                                result_time = data_collector.compile_and_run(cfg, graph_file_path, algo_file_path)
 
-                                    if result_time == None:
-                                        continue
-                                    else:
-                                        with open(output_file_name, 'a') as file:
-                                            output_sche = ''
-                                            for key, value in cfg.items():
-                                                output_sche += f"{value}, "
-                                            file.write(
-                                                output_sche+str(result_time)+'\n')
+                                if result_time == None:
+                                    continue
+                                else:
+                                    with open(output_file_name, 'a') as file:
+                                        output_sche = ''
+                                        for key, value in cfg.items():
+                                            output_sche += f"{value}, "
+                                        file.write(
+                                            output_sche+str(result_time)+'\n')
