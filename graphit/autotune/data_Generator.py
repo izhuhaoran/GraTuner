@@ -67,13 +67,29 @@ class GraphItDataCreator():
     # for machines without CILK or openmp support
     enable_parallel_tuning = True
 
-    enable_denseVertexSet_tuning = True
+    # enable_denseVertexSet_tuning = True
 
     # command-line arguments in graphit_autotuner(all defalut)
     default_schedule_file = ""
 
     latest_schedule = ''
     cfg_to_schedule_pass = True
+
+    def reset_flag(self):
+        # a flag for testing if NUMA-aware schedule is specified
+        self.use_NUMA = False
+        self.use_eager_update = False
+
+        # this flag is for testing on machine without NUMA library support
+        # this would simply not tune NUMA-aware schedules
+        self.enable_NUMA_tuning = True
+
+        # this would simply not tune parallelization related schedules
+        # for machines without CILK or openmp support
+        self.enable_parallel_tuning = True
+
+        # self.enable_denseVertexSet_tuning = True
+        self.cfg_to_schedule_pass = True
 
     def call_program(self, command):
         
@@ -116,7 +132,7 @@ class GraphItDataCreator():
             
             SSG_enble = True                # SSG也只在pull方向或者push-pull方向有效
             
-            if SSG_use:      # 使用numa时只能使用pull方向或者push-pull方向，且图划分数必须大于1
+            if SSG_use and cfg['parallelization'] != 'serial':      # 使用numa时必须允许并行，且只能使用pull方向或者push-pull方向，且图划分数必须大于1, 
                 NUMA_enable = True
         
         # 当使用SSG但SSG的使用条件不满足时，过滤不通过
@@ -394,9 +410,13 @@ class GraphItDataCreator():
         Compile and run a given configuration then                                   
         return performance                                                           
         """
-        self.cfg_to_schedule_pass = True
+        self.reset_flag()   # 重置一些标志位
+        
+        if cfg['NUMA'] == 'false':
+            self.enable_NUMA_tuning = False
+        if cfg['parallelization'] == 'serial':
+            self.enable_parallel_tuning = False
 
-        self.use_NUMA = False
         # only use NUMA when we are tuning parallel and NUMA schedules
         # if self.enable_NUMA_tuning and self.enable_parallel_tuning and cfg['NUMA'] == 'static-parallel':
         if self.enable_NUMA_tuning and self.enable_parallel_tuning and cfg['NUMA'] != 'false':
