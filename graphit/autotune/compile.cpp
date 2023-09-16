@@ -2,6 +2,5 @@
 namespace graphit {
 void user_defined_schedule (graphit::fir::high_level_schedule::ProgramScheduleNode::Ptr program) {
     program->configApplyDirection("s1", "SparsePush");
-    program->configApplyParallelization("s1", "serial");
-    program->configApplyPriorityUpdate("s1", "eager_priority_update" );}
+    program->configApplyParallelization("s1", "static-vertex-parallel");}
 }

@@ -7,7 +7,7 @@ import os
 import math
 import numpy as np
 
-GraphitPath = '/home/zhuhaoran/AutoGraph/AutoGraph/graphit'
+GraphitPath = '/data/zhr_data/AutoGraph/graphit'
 
 py_graphitc_file = f"{GraphitPath}/build/bin/graphitc.py"
 serial_compiler = "g++"

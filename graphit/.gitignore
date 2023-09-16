@@ -6,3 +6,9 @@
 .idea/
 build/
 cmake-build-debug/
+
+**/graphs/*
+!**/graphs/*.py
+
+autotune/test*
+autotune/*.out

@@ -14,35 +14,26 @@ func reset(v: Vertex)
 end
 
 func main()
-    for trail in 0:10
-        startTimer();
-        vertices.apply(reset);
-        var n : int = edges.getVertices();
-        var frontier : vertexset{Vertex} = new vertexset{Vertex}(0);
-	    var start_vertex : int = atoi(argv[2]);
-        frontier.addVertex(start_vertex); %add source vertex
-        SP[start_vertex] = 0;
+    startTimer();
+    vertices.apply(reset);
+    var n : int = edges.getVertices();
+    var frontier : vertexset{Vertex} = new vertexset{Vertex}(0);
+    frontier.addVertex(14); %add source vertex
+    SP[14] = 14;
 
-        var rounds : int = 0;
-        while (frontier.getVertexSetSize() != 0)
-            #s1# var output: vertexset{Vertex}  = edges.from(frontier).applyModified(updateEdge, SP);
-            delete frontier;
-            frontier = output;
-            rounds = rounds + 1;
-    	    if rounds == n
-	            print "negative cycle";
-	            break;
-	    end
-        end
-        delete frontier;
-        var elapsed_time : float = stopTimer();
-        print "elapsed time: ";
-        print elapsed_time;
-        print "rounds";
-        print rounds;
+    var rounds : int = 0;
+    while (frontier.getVertexSetSize() != 0)
+        #s1# frontier = edges.from(frontier).applyModified(updateEdge, SP);
+        rounds = rounds + 1;
+        if rounds == n
+            print "negative cycle";
+            break;
     end
+    end
+    var elapsed_time : float = stopTimer();
+    print "elapsed time: ";
+    print elapsed_time;
+    print "rounds";
+    print rounds;
 end
-
-% specify schedules here or use a separate schedule file
-
 
