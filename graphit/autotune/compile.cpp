@@ -1,6 +1,9 @@
 #include <graphit/frontend/high_level_schedule.h>
 namespace graphit {
 void user_defined_schedule (graphit::fir::high_level_schedule::ProgramScheduleNode::Ptr program) {
-    program->configApplyDirection("s1", "SparsePush");
-    program->configApplyParallelization("s1", "dynamic-vertex-parallel");}
+    program->configApplyDirection("s1", "SparsePush-DensePull");
+    program->configApplyParallelization("s1", "edge-aware-dynamic-vertex-parallel",1024,  "DensePull");
+    program->configApplyParallelization("s1", "dynamic-vertex-parallel",1024,  "SparsePush");
+    program->configApplyNumSSG("s1", "fixed-vertex-count", 20, "DensePull");
+    program->configApplyDenseVertexSet("s1","bitvector", "src-vertexset", "DensePull");}
 }

@@ -480,7 +480,7 @@ if __name__ == '__main__':
                                         continue
                                     else:
                                         with open(output_file_name, 'a') as file:
-                                            output_sche = f'{graph} '
+                                            output_sche = f'{graph}, '
                                             for key, value in cfg.items():
                                                 output_sche += f"{value}, "
                                             file.write(

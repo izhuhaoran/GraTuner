@@ -28,12 +28,17 @@ config = {
     'DenseVertexSet': 'boolean-array',
 }
 
-config_direction = ['SparsePush', 'DensePush', 'DensePull', 'DensePull-SparsePush', 'SparsePush-DensePull', 'DensePush-SparsePush']
+
+config_numSSG = ['fixed-vertex-count']
+config_NUMA = ['false', 'static-parallel', 'dynamic-parallel']    # dynamic-parallel doesn't seem to be implemented
+
+config_direction = ['SparsePush', 'DensePull', 'DensePull-SparsePush', 'SparsePush-DensePull', 'DensePush-SparsePush']  # densepush unsupported
 config_parallelization = ['serial', 'dynamic-vertex-parallel', 'static-vertex-parallel', 'edge-aware-dynamic-vertex-parallel']
 config_DenseVertexSet = ['boolean-array', 'bitvector']
+
+
+# just for priority graph
 # config_bucket_update_strategy = ['eager_priority_update', 'eager_priority_update_with_merge', 'lazy_priority_update']
-config_NUMA = ['false', 'static-parallel', 'dynamic-parallel']
-config_numSSG = ['fixed-vertex-count']
 
 algo_file_dir = f"{GraphitPath}/autotune/benchmarks/"
 # algo_list = ['cc.gt', 'pagerank.gt', 'sssp.gt', 'bfs.gt', 'cf.gt']
@@ -459,13 +464,23 @@ if __name__ == '__main__':
     }
     
     choice_num = 1
+    
+    start = False
     # for i in range(0, max_num_segments, 2):
     for i in [0, 5, 10, 15, 20]:
         cfg['numSSG'] = i
         
-        for NUMA_option in config_NUMA:
+        for NUMA_option in config_NUMA:     # numa 编译有问题
             cfg['NUMA'] = NUMA_option
-
+                            
+            if cfg['numSSG'] == 5 and cfg['NUMA'] == 'static-parallel':     # 这之前都采集过了
+                start = True
+            if not start:
+                continue
+            
+            if cfg['NUMA'] != 'false':      # numa 编译有问题
+                continue
+            
             for direction_option in config_direction:
                 cfg['direction'] = direction_option
 
@@ -497,6 +512,8 @@ if __name__ == '__main__':
                                     result_time = data_collector.compile_and_run(cfg, graph_file_path, algo_file_path)
 
                                     if result_time == None:
+                                        with open('/data/zhr_data/AutoGraph/dataset/error_options/error_options.txt', 'a') as err_file:
+                                           err_file.write(f'{cfg} {algo_file_name} {graph}\n')
                                         continue
                                     else:
                                         with open(output_file_name, 'a') as file:
