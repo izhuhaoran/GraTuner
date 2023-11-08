@@ -11,7 +11,7 @@ def dataHandle(file_path):
             outLines.append(new_line)
     
     output_path = file_path[:-4] + '.csv'
-    with open(output_path, 'w') as fw:
+    with open(output_path, 'w') as fw:x1
         fw.writelines(outLines)
 
 

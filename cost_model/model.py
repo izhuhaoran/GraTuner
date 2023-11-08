@@ -1,9 +1,10 @@
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 import dgl
-from dgl.nn.pytorch import GraphConv
+from dgl.nn.pytorch import GraphConv, GATConv
 from dgl import DGLGraph
 
 
@@ -42,32 +43,39 @@ class GraphConvolution(nn.Module):
                + str(self.out_features) + ')'
 
 
-class GraphCostModel(nn.Module):
+class AutoGraphModel(nn.Module):
     def __init__(self, in_dim=1, hidden_dim=256, out_dim=128) -> None:
-        super(GraphCostModel, self).__init__()
+        super(AutoGraphModel, self).__init__()
+        
+        # algorithm feature
+        self.algo_op1 = nn.Embedding(5, 32)
+        self.algo_op2 = nn.Embedding(5, 32)
+        self.algorithm_embedding = nn.Sequential(
+            nn.Linear(32*2,128),
+            nn.ReLU(),
+            nn.Linear(128,128),
+        )
         
         # graph data feature
-        
-        # hidden_dim = 256
-        # dropout = 0.5
-        # self.gc1 = GraphConvolution(in_dim, hidden_dim)
-        # self.gc2 = GraphConvolution(hidden_dim, out_dim)
-        # self.dropout = dropout
-        
         self.gc1 = GraphConv(in_dim, hidden_dim)  # 定义第一层图卷积
         self.gc2 = GraphConv(hidden_dim, hidden_dim)  # 定义第二层图卷积
+        
+        # self.gc1 = GATConv(in_dim, hidden_dim)  # 定义第一层图卷积
+        # self.gc2 = GATConv(hidden_dim, hidden_dim)  # 定义第二层图卷积
+        
         self.fc1 = nn.Linear(hidden_dim, out_dim)   # 定义图嵌入线性层
         
         # Super Schedule
         self.direction = nn.Embedding(5, 32)
-        self.parallel = nn.Embedding(5, 32)
+        self.parallel = nn.Embedding(4, 32)
         self.frontier = nn.Embedding(2, 32)
-        self.SSG_option = nn.Embedding(2, 32)
-        self.SSG_Num = nn.Embedding(10, 32)
-        self.NUMA = nn.Embedding(3, 32)
+        self.SSG_Num = nn.Embedding(5, 32)
+        
+        # self.SSG_option = nn.Embedding(2, 32)
+        # self.NUMA = nn.Embedding(3, 32)
 
         self.schedule_embedding = nn.Sequential(
-            nn.Linear(32*6,128),
+            nn.Linear(32*4,128),
             nn.ReLU(),
             nn.Linear(128,128),
         )
@@ -80,6 +88,14 @@ class GraphCostModel(nn.Module):
             nn.ReLU(),
             nn.Linear(64, 1)
         )
+    
+    
+    def embed_algo(self, op1, op2):
+        y1 = self.algo_op1(op1)
+        y2 = self.algo_op2(op2)
+        y = torch.cat((y1, y2), dim=1)
+        y = self.algorithm_embedding(y)
+        return y 
         
     # # waco style
     # def embed_sparse_matrix(self, x1, x2) :
@@ -109,11 +125,9 @@ class GraphCostModel(nn.Module):
         direction_embed = self.direction(y[0].long())
         parallel_embed = self.parallel(y[1].long())
         frontier_embed = self.frontier(y[2].long())
-        SSG_option_embed = self.SSG_option(y[3].long())
-        SSG_Num_embed = self.SSG_Num(y[4].long())
-        NUMA_embed = self.NUMA(y[5].long())
+        SSG_Num_embed = self.SSG_Num(y[3].long())
         
-        y1 = torch.cat((direction_embed,parallel_embed,frontier_embed,SSG_option_embed,SSG_Num_embed,NUMA_embed), dim=1)
+        y1 = torch.cat((direction_embed,parallel_embed,frontier_embed,SSG_Num_embed), dim=1)
         y = self.schedule_embedding(y1)
 
         #y = F.normalize(y)
@@ -125,11 +139,13 @@ class GraphCostModel(nn.Module):
         xy = self.final(xy)
         return xy
     
-    def forward(self, x1, x2, y):
+    def forward(self, graph, schedule):
         # Concat - Final
-        x = self.embed_sparse_matrix(x1,x2)
-        y = self.embed_super_schedule(y)
-        xy = torch.cat((x,y), dim=1)
+        # x1 = self.embed_algo(x1)
+        graph_feature = self.embed_sparse_matrix(graph)
+        schedule_feature = self.embed_super_schedule(schedule)
+        
+        xy = torch.cat((graph_feature, schedule_feature), dim=1)
         xy = self.final(xy)
         return xy
 
