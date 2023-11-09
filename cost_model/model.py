@@ -44,7 +44,7 @@ class GraphConvolution(nn.Module):
 
 
 class AutoGraphModel(nn.Module):
-    def __init__(self, in_dim=1, hidden_dim=256, out_dim=128) -> None:
+    def __init__(self, in_dim=2, hidden_dim=256, out_dim=128) -> None:
         super(AutoGraphModel, self).__init__()
         
         # algorithm feature
@@ -66,6 +66,7 @@ class AutoGraphModel(nn.Module):
         self.fc1 = nn.Linear(hidden_dim, out_dim)   # 定义图嵌入线性层
         
         # Super Schedule
+        # 10000 1000 10 10000
         self.direction = nn.Embedding(5, 32)
         self.parallel = nn.Embedding(4, 32)
         self.frontier = nn.Embedding(2, 32)
@@ -107,8 +108,12 @@ class AutoGraphModel(nn.Module):
     #     return y2
         
     def embed_sparse_matrix(self, g : DGLGraph) :
-        # 我们用节点的度作为初始节点特征。对于无向图，入度 = 出度
-        h = g.in_degrees().view(-1, 1).float() # [N, in_dim=1]
+        g = dgl.add_self_loop(g)
+        # 我们用节点的度作为初始节点特征。
+
+        h1 = g.in_degrees().view(-1, 1).float() # [N, in_dim=1]
+        h2 = g.out_degrees().view(-1, 1).float() # [N, out_dim=1]
+        h = torch.cat([h1, h2], dim=1)  # [N, 2]
         
         # 执行图卷积和激活函数
         h = F.relu(self.gc1(g, h))  # [N, hidden_dim]
@@ -122,10 +127,10 @@ class AutoGraphModel(nn.Module):
     
     def embed_super_schedule(self, y) :
         # Super Schedule
-        direction_embed = self.direction(y[0].long())
-        parallel_embed = self.parallel(y[1].long())
-        frontier_embed = self.frontier(y[2].long())
-        SSG_Num_embed = self.SSG_Num(y[3].long())
+        direction_embed = self.direction(y[:, 0].long())
+        parallel_embed = self.parallel(y[:, 1].long())
+        frontier_embed = self.frontier(y[:, 2].long())
+        SSG_Num_embed = self.SSG_Num(y[:, 3].long())
         
         y1 = torch.cat((direction_embed,parallel_embed,frontier_embed,SSG_Num_embed), dim=1)
         y = self.schedule_embedding(y1)

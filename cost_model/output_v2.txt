@@ -1,0 +1,173 @@
+TrainBatch:  0 , Graph:  sx-stackoverflow , Schedule:  0 , TrainLoss:  0.6876700520515442
+TrainBatch:  0 , Graph:  sx-stackoverflow , Schedule:  1 , TrainLoss:  0.5933544635772705
+TrainBatch:  0 , Graph:  sx-stackoverflow , Schedule:  2 , TrainLoss:  0.6406099796295166
+ValidBatch:  0 , Graph:  sx-stackoverflow , Accuracy :  0.75 , ValidLoss:  0.5946884751319885
+ValidBatch:  0 , Graph:  sx-stackoverflow , Accuracy :  0.7439516129032258 , ValidLoss:  0.565859854221344
+ValidBatch:  0 , Graph:  sx-stackoverflow , Accuracy :  0.8091954022988506 , ValidLoss:  0.4929761290550232
+TrainBatch:  0 , Graph:  dblp-cite , Schedule:  0 , TrainLoss:  0.37156012654304504
+TrainBatch:  0 , Graph:  dblp-cite , Schedule:  1 , TrainLoss:  0.4223707616329193
+TrainBatch:  0 , Graph:  dblp-cite , Schedule:  2 , TrainLoss:  0.6618198156356812
+ValidBatch:  0 , Graph:  dblp-cite , Accuracy :  0.8044354838709677 , ValidLoss:  0.42040321230888367
+ValidBatch:  0 , Graph:  dblp-cite , Accuracy :  0.7923387096774194 , ValidLoss:  0.5005465745925903
+ValidBatch:  0 , Graph:  dblp-cite , Accuracy :  0.8669354838709677 , ValidLoss:  0.3832879662513733
+TrainBatch:  0 , Graph:  dbpedia-team , Schedule:  0 , TrainLoss:  0.406169056892395
+TrainBatch:  0 , Graph:  dbpedia-team , Schedule:  1 , TrainLoss:  0.3763049244880676
+TrainBatch:  0 , Graph:  dbpedia-team , Schedule:  2 , TrainLoss:  0.33889055252075195
+ValidBatch:  0 , Graph:  dbpedia-team , Accuracy :  0.8608870967741935 , ValidLoss:  0.3492125868797302
+ValidBatch:  0 , Graph:  dbpedia-team , Accuracy :  0.8125 , ValidLoss:  0.4131046235561371
+ValidBatch:  0 , Graph:  dbpedia-team , Accuracy :  0.8774703557312253 , ValidLoss:  0.3490869700908661
+TrainBatch:  0 , Graph:  dimacs9-E , Schedule:  0 , TrainLoss:  0.2538321912288666
+TrainBatch:  0 , Graph:  dimacs9-E , Schedule:  1 , TrainLoss:  0.4578249752521515
+TrainBatch:  0 , Graph:  dimacs9-E , Schedule:  2 , TrainLoss:  0.23718400299549103
+ValidBatch:  0 , Graph:  dimacs9-E , Accuracy :  0.8528225806451613 , ValidLoss:  0.33653977513313293
+ValidBatch:  0 , Graph:  dimacs9-E , Accuracy :  0.8991935483870968 , ValidLoss:  0.23897595703601837
+ValidBatch:  0 , Graph:  dimacs9-E , Accuracy :  0.8866995073891626 , ValidLoss:  0.3014325201511383
+TrainBatch:  0 , Graph:  douban , Schedule:  0 , TrainLoss:  0.554304301738739
+TrainBatch:  0 , Graph:  douban , Schedule:  1 , TrainLoss:  0.8596770763397217
+TrainBatch:  0 , Graph:  douban , Schedule:  2 , TrainLoss:  0.4250729978084564
+ValidBatch:  0 , Graph:  douban , Accuracy :  0.6794354838709677 , ValidLoss:  0.7233026623725891
+ValidBatch:  0 , Graph:  douban , Accuracy :  0.7358870967741935 , ValidLoss:  0.6245160698890686
+ValidBatch:  0 , Graph:  douban , Accuracy :  0.75 , ValidLoss:  0.5971341133117676
+TrainBatch:  0 , Graph:  facebook-wosn-wall , Schedule:  0 , TrainLoss:  0.7419986128807068
+TrainBatch:  0 , Graph:  facebook-wosn-wall , Schedule:  1 , TrainLoss:  0.955559253692627
+TrainBatch:  0 , Graph:  facebook-wosn-wall , Schedule:  2 , TrainLoss:  1.0266374349594116
+ValidBatch:  0 , Graph:  facebook-wosn-wall , Accuracy :  0.5544354838709677 , ValidLoss:  0.9170709252357483
+ValidBatch:  0 , Graph:  facebook-wosn-wall , Accuracy :  0.5907258064516129 , ValidLoss:  0.8731686472892761
+ValidBatch:  0 , Graph:  facebook-wosn-wall , Accuracy :  0.6340579710144928 , ValidLoss:  0.7605973482131958
+TrainBatch:  0 , Graph:  github , Schedule:  0 , TrainLoss:  0.7479767203330994
+TrainBatch:  0 , Graph:  github , Schedule:  1 , TrainLoss:  0.7295923233032227
+TrainBatch:  0 , Graph:  github , Schedule:  2 , TrainLoss:  0.5311161279678345
+ValidBatch:  0 , Graph:  github , Accuracy :  0.7338709677419355 , ValidLoss:  0.6571146845817566
+ValidBatch:  0 , Graph:  github , Accuracy :  0.6975806451612904 , ValidLoss:  0.7349952459335327
+ValidBatch:  0 , Graph:  github , Accuracy :  0.7619047619047619 , ValidLoss:  0.5554779171943665
+TrainBatch:  0 , Graph:  komarix-imdb , Schedule:  0 , TrainLoss:  0.750387966632843
+TrainBatch:  0 , Graph:  komarix-imdb , Schedule:  1 , TrainLoss:  0.6546234488487244
+TrainBatch:  0 , Graph:  komarix-imdb , Schedule:  2 , TrainLoss:  0.5689133405685425
+ValidBatch:  0 , Graph:  komarix-imdb , Accuracy :  0.7338709677419355 , ValidLoss:  0.6241415739059448
+ValidBatch:  0 , Graph:  komarix-imdb , Accuracy :  0.7217741935483871 , ValidLoss:  0.6250607371330261
+ValidBatch:  0 , Graph:  komarix-imdb , Accuracy :  0.6666666666666666 , ValidLoss:  0.8105602860450745
+TrainBatch:  0 , Graph:  moreno_blogs , Schedule:  0 , TrainLoss:  0.7598603367805481
+TrainBatch:  0 , Graph:  moreno_blogs , Schedule:  1 , TrainLoss:  1.0232782363891602
+TrainBatch:  0 , Graph:  moreno_blogs , Schedule:  2 , TrainLoss:  0.926531970500946
+ValidBatch:  0 , Graph:  moreno_blogs , Accuracy :  0.6149193548387096 , ValidLoss:  0.8258960843086243
+ValidBatch:  0 , Graph:  moreno_blogs , Accuracy :  0.5725806451612904 , ValidLoss:  0.8969163298606873
+ValidBatch:  0 , Graph:  moreno_blogs , Accuracy :  0.6095238095238096 , ValidLoss:  0.8242244720458984
+TrainBatch:  0 , Graph:  opsahl-usairport , Schedule:  0 , TrainLoss:  0.5422366857528687
+TrainBatch:  0 , Graph:  opsahl-usairport , Schedule:  1 , TrainLoss:  0.654110848903656
+TrainBatch:  0 , Graph:  opsahl-usairport , Schedule:  2 , TrainLoss:  0.5192688703536987
+TrainBatch:  0 , Graph:  opsahl-usairport , Schedule:  3 , TrainLoss:  0.6162176728248596
+ValidBatch:  0 , Graph:  opsahl-usairport , Accuracy :  0.7963709677419355 , ValidLoss:  0.5018525123596191
+ValidBatch:  0 , Graph:  opsahl-usairport , Accuracy :  0.8024193548387096 , ValidLoss:  0.5002188682556152
+ValidBatch:  0 , Graph:  opsahl-usairport , Accuracy :  0.8104838709677419 , ValidLoss:  0.5510018467903137
+ValidBatch:  0 , Graph:  opsahl-usairport , Accuracy :  0.5 , ValidLoss:  0.9436294436454773
+TrainBatch:  0 , Graph:  patentcite , Schedule:  0 , TrainLoss:  0.4751777648925781
+TrainBatch:  0 , Graph:  patentcite , Schedule:  1 , TrainLoss:  0.5919222235679626
+TrainBatch:  0 , Graph:  patentcite , Schedule:  2 , TrainLoss:  0.573431134223938
+ValidBatch:  0 , Graph:  patentcite , Accuracy :  0.7439516129032258 , ValidLoss:  0.5737786293029785
+ValidBatch:  0 , Graph:  patentcite , Accuracy :  0.7741935483870968 , ValidLoss:  0.5055487155914307
+ValidBatch:  0 , Graph:  patentcite , Accuracy :  0.8061538461538461 , ValidLoss:  0.479328989982605
+TrainBatch:  0 , Graph:  petster-friendships-dog , Schedule:  0 , TrainLoss:  0.6260336637496948
+TrainBatch:  0 , Graph:  petster-friendships-dog , Schedule:  1 , TrainLoss:  0.5512145161628723
+TrainBatch:  0 , Graph:  petster-friendships-dog , Schedule:  2 , TrainLoss:  0.62912517786026
+ValidBatch:  0 , Graph:  petster-friendships-dog , Accuracy :  0.7358870967741935 , ValidLoss:  0.6002823710441589
+ValidBatch:  0 , Graph:  petster-friendships-dog , Accuracy :  0.7620967741935484 , ValidLoss:  0.5778965950012207
+ValidBatch:  0 , Graph:  petster-friendships-dog , Accuracy :  0.7134502923976608 , ValidLoss:  0.6072496771812439
+TrainBatch:  0 , Graph:  roadNet-CA , Schedule:  0 , TrainLoss:  0.41079482436180115
+TrainBatch:  0 , Graph:  roadNet-CA , Schedule:  1 , TrainLoss:  0.3952575623989105
+TrainBatch:  0 , Graph:  roadNet-CA , Schedule:  2 , TrainLoss:  0.3299230933189392
+ValidBatch:  0 , Graph:  roadNet-CA , Accuracy :  0.8044354838709677 , ValidLoss:  0.50504469871521
+ValidBatch:  0 , Graph:  roadNet-CA , Accuracy :  0.8508064516129032 , ValidLoss:  0.3592263460159302
+ValidBatch:  0 , Graph:  roadNet-CA , Accuracy :  0.8953846153846153 , ValidLoss:  0.2602449655532837
+TrainBatch:  0 , Graph:  subelj_cora , Schedule:  0 , TrainLoss:  0.6326248049736023
+TrainBatch:  0 , Graph:  subelj_cora , Schedule:  1 , TrainLoss:  0.7318134903907776
+TrainBatch:  0 , Graph:  subelj_cora , Schedule:  2 , TrainLoss:  0.6798313856124878
+ValidBatch:  0 , Graph:  subelj_cora , Accuracy :  0.7338709677419355 , ValidLoss:  0.6401371955871582
+ValidBatch:  0 , Graph:  subelj_cora , Accuracy :  0.6935483870967742 , ValidLoss:  0.7042908668518066
+ValidBatch:  0 , Graph:  subelj_cora , Accuracy :  0.7476190476190476 , ValidLoss:  0.5757335424423218
+TrainBatch:  0 , Graph:  sx-mathoverflow , Schedule:  0 , TrainLoss:  0.8495703339576721
+TrainBatch:  0 , Graph:  sx-mathoverflow , Schedule:  1 , TrainLoss:  0.786981463432312
+TrainBatch:  0 , Graph:  sx-mathoverflow , Schedule:  2 , TrainLoss:  0.7411250472068787
+ValidBatch:  0 , Graph:  sx-mathoverflow , Accuracy :  0.719758064516129 , ValidLoss:  0.7205536365509033
+ValidBatch:  0 , Graph:  sx-mathoverflow , Accuracy :  0.6431451612903226 , ValidLoss:  0.8345491290092468
+ValidBatch:  0 , Graph:  sx-mathoverflow , Accuracy :  0.6368421052631579 , ValidLoss:  0.7699347734451294
+TrainBatch:  0 , Graph:  youtube-groupmemberships , Schedule:  0 , TrainLoss:  0.40499550104141235
+TrainBatch:  0 , Graph:  youtube-groupmemberships , Schedule:  1 , TrainLoss:  0.3900924026966095
+TrainBatch:  0 , Graph:  youtube-groupmemberships , Schedule:  2 , TrainLoss:  0.40700268745422363
+ValidBatch:  0 , Graph:  youtube-groupmemberships , Accuracy :  0.8649193548387096 , ValidLoss:  0.3425445258617401
+ValidBatch:  0 , Graph:  youtube-groupmemberships , Accuracy :  0.8467741935483871 , ValidLoss:  0.3875233829021454
+ValidBatch:  0 , Graph:  youtube-groupmemberships , Accuracy :  0.8421052631578947 , ValidLoss:  0.3884710967540741
+--- Epoch 0 : Train 0.5967729021700061 Valid 0.5780680316443346 Acc 0.7571980251258738---
+save over.
+TrainBatch:  1 , Graph:  sx-stackoverflow , Schedule:  0 , TrainLoss:  0.6085913777351379
+TrainBatch:  1 , Graph:  sx-stackoverflow , Schedule:  1 , TrainLoss:  0.5629019141197205
+TrainBatch:  1 , Graph:  sx-stackoverflow , Schedule:  2 , TrainLoss:  0.5413320660591125
+ValidBatch:  1 , Graph:  sx-stackoverflow , Accuracy :  0.7479838709677419 , ValidLoss:  0.5317633748054504
+ValidBatch:  1 , Graph:  sx-stackoverflow , Accuracy :  0.7056451612903226 , ValidLoss:  0.658997654914856
+ValidBatch:  1 , Graph:  sx-stackoverflow , Accuracy :  0.8114942528735632 , ValidLoss:  0.5551936626434326
+TrainBatch:  1 , Graph:  dblp-cite , Schedule:  0 , TrainLoss:  0.42348799109458923
+TrainBatch:  1 , Graph:  dblp-cite , Schedule:  1 , TrainLoss:  0.49570900201797485
+TrainBatch:  1 , Graph:  dblp-cite , Schedule:  2 , TrainLoss:  0.40763115882873535
+ValidBatch:  1 , Graph:  dblp-cite , Accuracy :  0.8104838709677419 , ValidLoss:  0.42757758498191833
+ValidBatch:  1 , Graph:  dblp-cite , Accuracy :  0.8185483870967742 , ValidLoss:  0.44128647446632385
+ValidBatch:  1 , Graph:  dblp-cite , Accuracy :  0.8145161290322581 , ValidLoss:  0.44641605019569397
+TrainBatch:  1 , Graph:  dbpedia-team , Schedule:  0 , TrainLoss:  0.3150772452354431
+TrainBatch:  1 , Graph:  dbpedia-team , Schedule:  1 , TrainLoss:  0.4202662706375122
+TrainBatch:  1 , Graph:  dbpedia-team , Schedule:  2 , TrainLoss:  0.3781666159629822
+ValidBatch:  1 , Graph:  dbpedia-team , Accuracy :  0.8689516129032258 , ValidLoss:  0.329419881105423
+ValidBatch:  1 , Graph:  dbpedia-team , Accuracy :  0.8568548387096774 , ValidLoss:  0.368681401014328
+ValidBatch:  1 , Graph:  dbpedia-team , Accuracy :  0.849802371541502 , ValidLoss:  0.40460923314094543
+TrainBatch:  1 , Graph:  dimacs9-E , Schedule:  0 , TrainLoss:  0.2655210494995117
+TrainBatch:  1 , Graph:  dimacs9-E , Schedule:  1 , TrainLoss:  0.32286515831947327
+TrainBatch:  1 , Graph:  dimacs9-E , Schedule:  2 , TrainLoss:  0.26658201217651367
+ValidBatch:  1 , Graph:  dimacs9-E , Accuracy :  0.8810483870967742 , ValidLoss:  0.30153265595436096
+ValidBatch:  1 , Graph:  dimacs9-E , Accuracy :  0.905241935483871 , ValidLoss:  0.23826146125793457
+ValidBatch:  1 , Graph:  dimacs9-E , Accuracy :  0.8768472906403941 , ValidLoss:  0.3501257300376892
+TrainBatch:  1 , Graph:  douban , Schedule:  0 , TrainLoss:  0.5352193713188171
+TrainBatch:  1 , Graph:  douban , Schedule:  1 , TrainLoss:  0.7313125729560852
+TrainBatch:  1 , Graph:  douban , Schedule:  2 , TrainLoss:  0.6162837147712708
+ValidBatch:  1 , Graph:  douban , Accuracy :  0.7883064516129032 , ValidLoss:  0.5167802572250366
+ValidBatch:  1 , Graph:  douban , Accuracy :  0.7217741935483871 , ValidLoss:  0.6687497496604919
+ValidBatch:  1 , Graph:  douban , Accuracy :  0.69 , ValidLoss:  0.6918851733207703
+TrainBatch:  1 , Graph:  facebook-wosn-wall , Schedule:  0 , TrainLoss:  1.129839301109314
+TrainBatch:  1 , Graph:  facebook-wosn-wall , Schedule:  1 , TrainLoss:  0.8378809690475464
+TrainBatch:  1 , Graph:  facebook-wosn-wall , Schedule:  2 , TrainLoss:  1.0875012874603271
+ValidBatch:  1 , Graph:  facebook-wosn-wall , Accuracy :  0.5524193548387096 , ValidLoss:  0.9722132086753845
+ValidBatch:  1 , Graph:  facebook-wosn-wall , Accuracy :  0.6229838709677419 , ValidLoss:  0.8476802110671997
+ValidBatch:  1 , Graph:  facebook-wosn-wall , Accuracy :  0.4963768115942029 , ValidLoss:  1.1682138442993164
+TrainBatch:  1 , Graph:  github , Schedule:  0 , TrainLoss:  0.5910567045211792
+TrainBatch:  1 , Graph:  github , Schedule:  1 , TrainLoss:  0.6275262236595154
+TrainBatch:  1 , Graph:  github , Schedule:  2 , TrainLoss:  0.715646505355835
+ValidBatch:  1 , Graph:  github , Accuracy :  0.7338709677419355 , ValidLoss:  0.5932852029800415
+ValidBatch:  1 , Graph:  github , Accuracy :  0.6995967741935484 , ValidLoss:  0.706976056098938
+ValidBatch:  1 , Graph:  github , Accuracy :  0.8095238095238095 , ValidLoss:  0.47705256938934326
+TrainBatch:  1 , Graph:  komarix-imdb , Schedule:  0 , TrainLoss:  0.8809003233909607
+TrainBatch:  1 , Graph:  komarix-imdb , Schedule:  1 , TrainLoss:  0.6652600765228271
+TrainBatch:  1 , Graph:  komarix-imdb , Schedule:  2 , TrainLoss:  0.6150880455970764
+ValidBatch:  1 , Graph:  komarix-imdb , Accuracy :  0.7016129032258065 , ValidLoss:  0.6745953559875488
+ValidBatch:  1 , Graph:  komarix-imdb , Accuracy :  0.6451612903225806 , ValidLoss:  0.8103305101394653
+ValidBatch:  1 , Graph:  komarix-imdb , Accuracy :  0.7238095238095238 , ValidLoss:  0.6317601203918457
+TrainBatch:  1 , Graph:  moreno_blogs , Schedule:  0 , TrainLoss:  0.7941445112228394
+TrainBatch:  1 , Graph:  moreno_blogs , Schedule:  1 , TrainLoss:  0.7654535174369812
+TrainBatch:  1 , Graph:  moreno_blogs , Schedule:  2 , TrainLoss:  0.659701943397522
+ValidBatch:  1 , Graph:  moreno_blogs , Accuracy :  0.6693548387096774 , ValidLoss:  0.7120574712753296
+ValidBatch:  1 , Graph:  moreno_blogs , Accuracy :  0.6935483870967742 , ValidLoss:  0.7151947021484375
+ValidBatch:  1 , Graph:  moreno_blogs , Accuracy :  0.5952380952380952 , ValidLoss:  0.862393856048584
+TrainBatch:  1 , Graph:  opsahl-usairport , Schedule:  0 , TrainLoss:  0.44298601150512695
+TrainBatch:  1 , Graph:  opsahl-usairport , Schedule:  1 , TrainLoss:  0.49415624141693115
+TrainBatch:  1 , Graph:  opsahl-usairport , Schedule:  2 , TrainLoss:  0.5604628324508667
+TrainBatch:  1 , Graph:  opsahl-usairport , Schedule:  3 , TrainLoss:  0.14165423810482025
+ValidBatch:  1 , Graph:  opsahl-usairport , Accuracy :  0.7540322580645161 , ValidLoss:  0.5664156079292297
+ValidBatch:  1 , Graph:  opsahl-usairport , Accuracy :  0.8306451612903226 , ValidLoss:  0.45018988847732544
+ValidBatch:  1 , Graph:  opsahl-usairport , Accuracy :  0.8608870967741935 , ValidLoss:  0.3992266356945038
+ValidBatch:  1 , Graph:  opsahl-usairport , Accuracy :  0.8333333333333334 , ValidLoss:  0.42286771535873413
+TrainBatch:  1 , Graph:  patentcite , Schedule:  0 , TrainLoss:  0.6391546130180359
+TrainBatch:  1 , Graph:  patentcite , Schedule:  1 , TrainLoss:  0.549299418926239
+TrainBatch:  1 , Graph:  patentcite , Schedule:  2 , TrainLoss:  0.5066390037536621
+ValidBatch:  1 , Graph:  patentcite , Accuracy :  0.8104838709677419 , ValidLoss:  0.46273499727249146
+ValidBatch:  1 , Graph:  patentcite , Accuracy :  0.7641129032258065 , ValidLoss:  0.5744781494140625
+ValidBatch:  1 , Graph:  patentcite , Accuracy :  0.8061538461538461 , ValidLoss:  0.5039088726043701
+TrainBatch:  1 , Graph:  petster-friendships-dog , Schedule:  0 , TrainLoss:  0.6675931811332703
+TrainBatch:  1 , Graph:  petster-friendships-dog , Schedule:  1 , TrainLoss:  0.5384111404418945
+TrainBatch:  1 , Graph:  petster-friendships-dog , Schedule:  2 , TrainLoss:  0.5428304076194763
+ValidBatch:  1 , Graph:  petster-friendships-dog , Accuracy :  0.8185483870967742 , ValidLoss:  0.4360620379447937
+ValidBatch:  1 , Graph:  petster-friendships-dog , Accuracy :  0.7056451612903226 
