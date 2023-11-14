@@ -10,7 +10,7 @@ from torch.utils.data import random_split, DataLoader
 import dgl
 
 from data_loader import ScheduleDataset, GraphsDataset, ScheduleGraphDataset, ScheduleDataset_v2
-from model import AutoGraphModel
+from model import AutoGraphModel, AutoGraphModel_GAT
 
 
 lr = 1e-4
@@ -90,6 +90,7 @@ def load_data(file_path):
         data[name] = group.values
     
     return data
+
 
 def train():
 
@@ -251,6 +252,8 @@ def train_v2():
         rank_equal_num = 0
         rank_all_num = 0
         
+        valid_accuracy_best = 0.0
+        
         for graph_name in graph_list:
             # torch.cuda.empty_cache()
 
@@ -292,8 +295,15 @@ def train_v2():
 
                 loss.backward()
                 optimizer.step()
+                
+                # 计算排序情况
+                pred_sign = torch.sign(pred1.squeeze() - pred2.squeeze())
+                equal_count = (sign == pred_sign).sum().item()
+                # unequal_count = (sign != pred_sign).sum().item()
+                
+                accuracy = equal_count / len(sign)
 
-                print("TrainBatch: ", epoch, ", Graph: ", graph_name , ", Schedule: ", train_batchidx, ", TrainLoss: ", loss.item())
+                print("TrainBatch: ", epoch, ", Graph: ", graph_name , ", TrainLoss: ", loss.item(), ", Accuracy: ", accuracy)
 
             # Validation
             model.eval()
@@ -327,9 +337,9 @@ def train_v2():
                     
                     rank_equal_num += equal_count
                     rank_all_num += len(sign)
-                    
                     accuracy = equal_count / len(sign)
-                    print("ValidBatch: ", epoch, ", Graph: ", graph_name, ", Accuracy : ", accuracy, ", ValidLoss: ", loss.item())
+                    
+                    print("ValidBatch: ", epoch, ", Graph: ", graph_name, ", ValidLoss: ", loss.item(), ", Accuracy : ", accuracy)
 
         valid_accuracy = rank_equal_num / rank_all_num
         
@@ -340,10 +350,153 @@ def train_v2():
                 train_loss/train_loss_cnt, valid_loss/valid_loss_cnt, valid_accuracy))
         f.flush()
         
+        if valid_accuracy_best < valid_accuracy:
+            torch.save(model.state_dict(), "/home/zhuhaoran/AutoGraph/AutoGraph/cost_model/costmodel_v2_best.pth")
+            valid_accuracy_best = valid_accuracy
+            
         torch.save(model.state_dict(), "/home/zhuhaoran/AutoGraph/AutoGraph/cost_model/costmodel_v2.pth")
+        print("save over.")
+
+def train_GAT():
+    algo_name = 'pagerank'
+    train_file_path = f'/home/zhuhaoran/AutoGraph/AutoGraph/dataset/train/{algo_name}.csv'
+    val_file_path = f'/home/zhuhaoran/AutoGraph/AutoGraph/dataset/train/{algo_name}.csv'
+    
+    train_all_data = load_data(train_file_path)
+    val_all_data = load_data(val_file_path)
+    
+    f = open("./trainlog_gat.txt", 'a')
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    model = AutoGraphModel_GAT()
+    
+    # checkpoint = torch.load("/home/zhuhaoran/AutoGraph/AutoGraph/cost_model/costmodel_gat.pth")
+    # model.load_state_dict(checkpoint)
+    
+    model = model.to(device)
+    # model.load_state_dict(torch.load('./resnet.pth'))
+
+    criterion = nn.MarginRankingLoss(margin=1)
+    optimizer = Adam(model.parameters(), lr=lr)
+
+    for epoch in range(epoches):
+        train_loss = 0.0
+        train_loss_cnt = 0
+        
+        valid_loss = 0.0
+        valid_loss_cnt = 0
+        
+        rank_equal_num = 0
+        rank_all_num = 0
+        
+        valid_accuracy_best = 0.0
+        
+        for graph_name in graph_list:
+            # torch.cuda.empty_cache()
+
+            Train_Schedules_Dataset = ScheduleDataset_v2(train_all_data[graph_name])
+            Val_Schedules_Dataset = ScheduleDataset_v2(val_all_data[graph_name])
+
+            train_data_schedule = DataLoader(Train_Schedules_Dataset, batch_size=batch_size, shuffle=True)
+            val_data_schedule = DataLoader(Val_Schedules_Dataset, batch_size=batch_size, shuffle=True)
+            
+            g = create_dgl_graph(graph_name)
+            g = g.to(device)
+            
+            # Train
+            model.train()
+            for train_batchidx, (schedule, runtime) in enumerate(train_data_schedule):
+                schedule = schedule.to(device)
+                runtime = runtime.to(device)
+
+                optimizer.zero_grad()
+                
+                graph_feature = model.embed_sparse_matrix(g)
+                graph_feature = graph_feature.expand((schedule.shape[0], graph_feature.shape[1]))
+
+                # 前向传播
+                predict = model.forward_after_query(graph_feature, schedule)
+                
+                # HingeRankingLoss
+                iu = torch.triu_indices(predict.shape[0], predict.shape[0], 1)  # 使用上三角索引获得任意两个预测结果的组合
+                
+                pred1, pred2 = predict[iu[0]], predict[iu[1]]
+                true1, true2 = runtime[iu[0]], runtime[iu[1]]
+                sign = (true1-true2).sign()
+                sign[sign==0] = 1
+
+                loss = criterion(pred1.squeeze(), pred2.squeeze(), sign)
+
+                train_loss += loss.item()
+                train_loss_cnt += 1
+
+                loss.backward()
+                optimizer.step()
+                
+                # 计算排序情况
+                pred_sign = torch.sign(pred1.squeeze() - pred2.squeeze())
+                equal_count = (sign == pred_sign).sum().item()
+                # unequal_count = (sign != pred_sign).sum().item()
+                
+                accuracy = equal_count / len(sign)
+
+                print("TrainBatch: ", epoch, ", Graph: ", graph_name , ", TrainLoss: ", loss.item(), ", Accuracy: ", accuracy)
+
+            # Validation
+            model.eval()
+            with torch.no_grad():
+                for val_batchidx, (schedule, runtime) in enumerate(val_data_schedule):
+
+                    schedule = schedule.to(device)
+                    runtime = runtime.to(device)
+                    
+                    graph_feature = model.embed_sparse_matrix(g)
+                    graph_feature = graph_feature.expand((schedule.shape[0], graph_feature.shape[1]))
+
+                    # 前向传播
+                    predict = model.forward_after_query(graph_feature, schedule)
+
+                    # HingeRankingLoss
+                    iu = torch.triu_indices(predict.shape[0], predict.shape[0], 1)
+                    pred1, pred2 = predict[iu[0]], predict[iu[1]]
+                    true1, true2 = runtime[iu[0]], runtime[iu[1]]
+                    sign = (true1-true2).sign()
+                    sign[sign==0] = 1
+
+                    loss = criterion(pred1.squeeze(), pred2.squeeze(), sign)
+                    valid_loss += loss.item()
+                    valid_loss_cnt += 1
+                    
+                    # 计算排序情况
+                    pred_sign = torch.sign(pred1.squeeze() - pred2.squeeze())
+                    equal_count = (sign == pred_sign).sum().item()
+                    # unequal_count = (sign != pred_sign).sum().item()
+                    
+                    rank_equal_num += equal_count
+                    rank_all_num += len(sign)
+                    accuracy = equal_count / len(sign)
+                    
+                    print("ValidBatch: ", epoch, ", Graph: ", graph_name, ", ValidLoss: ", loss.item(), ", Accuracy : ", accuracy)
+
+        valid_accuracy = rank_equal_num / rank_all_num
+        
+        print("--- Epoch {} : Train {} Valid {} Acc {}---".format(epoch,
+              train_loss/train_loss_cnt, valid_loss/valid_loss_cnt, valid_accuracy))
+
+        f.write("--- Epoch {} : Train {} Valid {} Acc {}---\n".format(epoch,
+                train_loss/train_loss_cnt, valid_loss/valid_loss_cnt, valid_accuracy))
+        f.flush()
+        
+        if valid_accuracy_best < valid_accuracy:
+            torch.save(model.state_dict(), "/home/zhuhaoran/AutoGraph/AutoGraph/cost_model/costmodel_gat_best.pth")
+            valid_accuracy_best = valid_accuracy
+            
+        torch.save(model.state_dict(), "/home/zhuhaoran/AutoGraph/AutoGraph/cost_model/costmodel_gat.pth")
         print("save over.")
 
 
 
 if __name__ == '__main__':
-    train_v2()
+    # train_v2()
+    train_GAT()
