@@ -81,25 +81,58 @@ def data_split(algo_name):
 # data_split('pagerank')
 
 
-file_path = '/home/zhuhaoran/AutoGraph/AutoGraph/dataset/train/pagerank.csv'
-origin_data = pd.read_csv(file_path, comment='#', sep=',', header=None)
-# origin_data.to_csv(file_path, sep=',', header=False, index=False)
+def group_test():
+    file_path = '/home/zhuhaoran/AutoGraph/AutoGraph/dataset/train/pagerank.csv'
+    origin_data = pd.read_csv(file_path, comment='#', sep=',', header=None)
+    # origin_data.to_csv(file_path, sep=',', header=False, index=False)
 
-# origin_data = pd.read_csv(file_path, comment='#', sep=', ', header=None)
-# origin_data.to_csv(file_path, sep=',', header=False, index=False)
+    # origin_data = pd.read_csv(file_path, comment='#', sep=', ', header=None)
+    # origin_data.to_csv(file_path, sep=',', header=False, index=False)
 
-# 根据第一列的不同值进行分组
-origin_data = origin_data.groupby(0)
+    # 根据第一列的不同值进行分组
+    origin_data = origin_data.groupby(0)
 
-data = {}
+    data = {}
 
-# 遍历分组并保存为文件
-for name, group in origin_data:
-    # 构造文件名
-    # print(group)
-    a = group.values
-    # print(a)
-    data[name] = group.values
-    print(type(group))
+    # 遍历分组并保存为文件
+    for name, group in origin_data:
+        # 构造文件名
+        # print(group)
+        a = group.values
+        # print(a)
+        data[name] = group.values
+        print(type(group))
 
-# print(data['dblp-cite'])
+    print(data['dblp-cite'])
+
+    for da in data['dblp-cite']:
+        print(da)
+        print(data['dblp-cite'])
+
+
+def csv_compare():
+
+    # 读取第一个 CSV 文件
+    df1 = pd.read_csv('/home/zhuhaoran/AutoGraph/AutoGraph/dataset/all_true_schedule.csv', delimiter=',', header=None)
+    # 读取第二个 CSV 文件
+    df2 = pd.read_csv('/home/zhuhaoran/AutoGraph/AutoGraph/test/grouped/dblp-cite_pagerank.gt_output.csv', delimiter=',', header=None)
+
+    # 提取第2列到第5列的数据
+    columns_to_compare = [1, 2, 3, 4, 5]  # 第2列到第5列对应的索引是 1, 2, 3, 4
+
+    # 比较两个数据框的指定列
+    comparison = df1[columns_to_compare].equals(df2[columns_to_compare])
+
+    if comparison:
+        print("两个 CSV 文件的指定列内容完全一致")
+    else:
+        print("两个 CSV 文件的指定列内容不完全一致")
+
+
+a = np.array([1,2,3])
+b = np.array([1,2,3])
+c = np.array([1,2,3])
+
+d = np.concatenate((a,b,c))
+
+print(d)

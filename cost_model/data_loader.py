@@ -32,6 +32,32 @@ SSGNum_map = {
     '20': 4
 }
 
+direction_map_onehot = {
+    'SparsePush': [1, 0, 0, 0, 0], 
+    'DensePull' : [0, 1, 0, 0, 0], 
+    'DensePull-SparsePush' : [0, 0, 1, 0, 0], 
+    'SparsePush-DensePull' : [0, 0, 0, 1, 0], 
+    'DensePush-SparsePush' : [0, 0, 0, 0, 1]
+}
+parallelization_map_onehot = {
+    'serial' : [1, 0, 0, 0], 
+    'dynamic-vertex-parallel' : [0, 1, 0, 0], 
+    'static-vertex-parallel' : [0, 0, 1, 0], 
+    'edge-aware-dynamic-vertex-parallel' : [0, 0, 0, 1]
+}
+DenseVertexSet_map_onehot = {
+    'boolean-array' : [1, 0], 
+    'bitvector' : [0, 1]
+}
+
+SSGNum_map_onehot = {
+    '0': [1, 0, 0, 0, 0],
+    '5': [0, 1, 0, 0, 0],
+    '10': [0, 0, 1, 0, 0],
+    '15': [0, 0, 0, 1, 0],
+    '20': [0, 0, 0, 0, 1]
+}
+
 # config_bucket_update_strategy = ['eager_priority_update', 'eager_priority_update_with_merge', 'lazy_priority_update']
 # config_NUMA = ['false', 'static-parallel', 'dynamic-parallel']
 
@@ -119,8 +145,46 @@ class ScheduleDataset(Dataset):
         return self.schedules[index], self.runtimes[index]
 
 
+class ScheduleDataset_Onehot(Dataset):
+    def __init__(self, origin_data):
+        schedules = []
+        runtimes =[]
+        
+        for data in origin_data:
+            # graphs.append(data[0])
+            
+            sche_tmp_0 = direction_map_onehot[data[1]]
+            sche_tmp_1 = parallelization_map_onehot[data[2]]
+            sche_tmp_2 = DenseVertexSet_map_onehot[data[3]]
+            sche_tmp_3 = SSGNum_map_onehot[str(data[5])]
+            
+            sche_tmp = np.concatenate((sche_tmp_0, sche_tmp_1, sche_tmp_2, sche_tmp_3))
+            schedules.append(sche_tmp)
+    
+            runtimes.append(data[6])
+        
+        schedules = np.stack(schedules, axis=0)
+        runtimes = np.stack(runtimes, axis=0)
+        
+        self.schedules = schedules.astype(np.float32)
+        self.runtimes = runtimes.astype(np.float32)
+        
+        # # Normalize
+        # self.runtimes = self.runtimes / 1000.0
+
+        # To TorchTensor
+        self.schedules = torch.from_numpy(self.schedules)
+        self.runtimes = torch.from_numpy(self.runtimes)
+
+    def __len__(self):
+        return len(self.schedules)
+
+    def __getitem__(self, index):
+        return self.schedules[index], self.runtimes[index]
+
+
 class ScheduleDataset_v2(Dataset):
-    def __init__(self, origin_data : pd.DataFrame):
+    def __init__(self, origin_data):
         schedules = []
         runtimes =[]
         
