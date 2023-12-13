@@ -85,7 +85,7 @@ class AutoGraphModel(nn.Module):
         self.final = nn.Sequential(
             nn.Linear(128+128, 128),
             nn.ReLU(),
-            nn.Dropout(0.5),
+            # nn.Dropout(0.5),
             nn.Linear(128, 64),
             nn.ReLU(),
             nn.Linear(64, 1)
@@ -190,7 +190,7 @@ class AutoGraphModel_Onehot(nn.Module):
         self.final = nn.Sequential(
             nn.Linear(128+128, 128),
             nn.ReLU(),
-            # nn.Dropout(0.5),
+            nn.Dropout(0.5),
             nn.Linear(128, 64),
             nn.ReLU(),
             nn.Linear(64, 1)

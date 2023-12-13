@@ -588,13 +588,13 @@ if __name__ == '__main__':
 
     graph_name = 'dblp-cite'
     
-    test_all_data = load_data('/home/zhuhaoran/AutoGraph/AutoGraph/dataset/val/pagerank.csv')
+    test_all_data = load_data('/home/zhuhaoran/AutoGraph/AutoGraph/dataset/train/pagerank.csv')
     test_all_data = test_all_data['dblp-cite']
     
     device = torch.device("cuda:" + str(2) if torch.cuda.is_available() else "cpu")
     model = AutoGraphModel()
     
-    checkpoint = torch.load("/home/zhuhaoran/AutoGraph/AutoGraph/cost_model/costmodel_v2_new.pth")
+    checkpoint = torch.load("/home/zhuhaoran/AutoGraph/AutoGraph/cost_model/costmodel_v2_best.pth")
     model.load_state_dict(checkpoint)
     
     model = model.to(device)
@@ -602,7 +602,7 @@ if __name__ == '__main__':
     # for graph_name in graph_list:
     
     Test_Schedules_Dataset = ScheduleDataset_v2(test_all_data)
-    test_data_schedule = DataLoader(Test_Schedules_Dataset, batch_size=32, shuffle=True)
+    test_data_schedule = DataLoader(Test_Schedules_Dataset, batch_size=128, shuffle=True)
         
     g = create_dgl_graph(graph_name)
     g = g.to(device)

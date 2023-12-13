@@ -81,6 +81,41 @@ def data_split(algo_name):
 # data_split('pagerank')
 
 
+def data_split_new(algo_name):
+    file_path = file_path = f'{cwd}/{algo_name}.gt_output.csv'
+    origin_data = pd.read_csv(file_path, comment='#', sep=',', header=None)
+    origin_data = origin_data.values
+    
+    # 定义训练集和测试集的划分比例
+    train_ratio = 0.7
+    val_ratio = 0.3
+    # test_ratio = 0.2
+
+    train_size = int(train_ratio * len(origin_data))
+    # val_size = int(val_ratio * len(Schedules_Dataset))
+    val_size = len(origin_data) - train_size
+    
+    # 划分数据集
+    np.random.shuffle(origin_data)  # 打乱数组顺序
+    
+    train_dataset = origin_data[:train_size]
+    val_dataset = origin_data[train_size:]
+    
+    train_dataframe = pd.DataFrame(train_dataset)
+    val_dataframe = pd.DataFrame(val_dataset)
+    
+    train_output_path = f'/home/zhuhaoran/AutoGraph/AutoGraph/dataset/train/{algo_name}.csv'
+    val_output_path = f'/home/zhuhaoran/AutoGraph/AutoGraph/dataset/val/{algo_name}.csv'
+    
+    train_dataframe.to_csv(train_output_path, sep=',', header=False, index=False)
+    val_dataframe.to_csv(val_output_path, sep=',', header=False, index=False)
+    
+    # np.savetxt(train_output_path, train_dataset, delimiter=',')
+    # np.savetxt(val_output_path, val_dataset, delimiter=',')
+
+# data_split('pagerank')
+
+
 def group_test():
     file_path = '/home/zhuhaoran/AutoGraph/AutoGraph/dataset/train/pagerank.csv'
     origin_data = pd.read_csv(file_path, comment='#', sep=',', header=None)
@@ -129,10 +164,8 @@ def csv_compare():
         print("两个 CSV 文件的指定列内容不完全一致")
 
 
-a = np.array([1,2,3])
-b = np.array([1,2,3])
-c = np.array([1,2,3])
-
-d = np.concatenate((a,b,c))
-
-print(d)
+graph_list = ['sx-stackoverflow', 'dblp-cite', 'dbpedia-team', 'dimacs9-E', 'douban',
+              'facebook-wosn-wall', 'github', 'komarix-imdb', 'moreno_blogs', 'opsahl-usairport',
+              'patentcite', 'petster-friendships-dog', 'roadNet-CA', 'subelj_cora', 'sx-mathoverflow',
+               'youtube-groupmemberships', 
+              ]
