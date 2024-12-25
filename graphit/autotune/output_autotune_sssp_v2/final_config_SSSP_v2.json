@@ -1,0 +1,1 @@
+{"numSSG": 1, "direction": "SparsePush", "DenseVertexSet": "boolean-array", "delta": 320009, "parallelization": "dynamic-vertex-parallel", "bucket_update_strategy": "eager_priority_update_with_merge"}

@@ -11,10 +11,12 @@ import shlex
 from sys import exit
 
 
-GraphitPath = '/data/zhr_data/AutoGraph/graphit'
+GraphitPath = '/home/zhuhaoran/AutoGraph/AutoGraph/graphit'
 
 py_graphitc_file = f"{GraphitPath}/build/bin/graphitc.py"
 serial_compiler = "g++"
+
+output_file_dir = f"{GraphitPath}/autotune/costmodel_dataset/"
 
 # if using icpc for par_compiler, the compilation flags for CILK and OpenMP needs to be changed
 par_compiler = "g++"
@@ -44,7 +46,7 @@ algo_file_dir = f"{GraphitPath}/autotune/benchmarks/"
 # algo_list = ['cc.gt', 'pagerank.gt', 'sssp.gt', 'bfs.gt', 'cf.gt']
 algo_list = ['sssp.gt', 'cc.gt', 'pagerank.gt', 'bfs.gt', 'cf.gt']
 
-graph_file_dir = f"{GraphitPath}/autotune/graphs/"
+graph_file_dir = "/home/zhuhaoran/AutoGraph/graphs/"
 # graph_list = ['dblp-cite', 'dbpedia-team', 'dimacs9-E', 'dimacs10-uk-2002', 'douban',
 #               'facebook-wosn-wall', 'github', 'komarix-imdb', 'moreno_blogs', 'opsahl-usairport',
 #               'patentcite', 'petster-friendships-dog', 'roadNet-CA', 'subelj_cora', 'sx-mathoverflow',
@@ -325,10 +327,12 @@ class GraphItDataCreator():
         return 0
 
 
-    def compile(self, cfg, algo_file_, id):
+    def compile(self, cfg, algo_file_):
         """                                                                          
         Compile a given configuration in parallel                                    
         """
+        self.call_program('rm test')
+        self.call_program('rm test.cpp')
 
         # compile the schedule file along with the original algorithm file
         compile_graphit_cmd = 'python ' + py_graphitc_file + \
@@ -356,16 +360,26 @@ class GraphItDataCreator():
         print(compile_graphit_cmd)
         print(compile_cpp_cmd)
 
-        self.call_program(compile_graphit_cmd)
+        result1 = self.call_program(compile_graphit_cmd)
+        if result1['returncode'] != 0:
+            with open(f'{output_file_dir}/error_compile_graphit.txt', '+a') as fw:
+                fw.write(f"error graphitc, {str(cfg)}, {compile_graphit_cmd}\n")
+            return {'returncode': -1, 'run_time': 0.0}
         # try:
         #     self.call_program(compile_graphit_cmd)
         # except:
         #     print ("fail to compile .gt file")
         #     return None
-        
-        return self.call_program(compile_cpp_cmd)
 
-    def run_precompiled(self, cfg, compile_result, graph, id):
+        result2 = self.call_program(compile_cpp_cmd)
+        if result2['returncode'] != 0:
+            with open(f'{output_file_dir}/error_compile_gcc.txt', '+a') as fw:
+                fw.write(f"error g++, {str(cfg)}, {compile_cpp_cmd}\n")
+            return {'returncode': -1, 'run_time': 0.0}
+        
+        return result2
+
+    def run_precompiled(self, cfg, compile_result, graph, algo):
         """                                                                          
         Run a compile_result from compile() sequentially and return performance      
         """
@@ -398,16 +412,28 @@ class GraphItDataCreator():
             # print ("memory limit: " + str(process_memory_limit))
             run_result = self.call_program(run_cmd)
         finally:
-            self.call_program('rm test')
-            self.call_program('rm test.cpp')
+            # self.call_program('rm test')
+            # self.call_program('rm test.cpp')
+            pass
 
         # self.call_program('rm test.out')
 
         if run_result['returncode'] != 0:
             print('running error, return code :' + str(run_result['returncode']))
+            # 打开运行输出源文件test.out并读取内容
+            with open(f'{GraphitPath}/autotune/test.out', 'r') as fr:
+                content = fr.read()
+    
+            with open(f'{output_file_dir}/error_run.txt', 'a') as err_file:
+                err_file.write(f'{str(cfg)}, {algo}, {graph}, {run_cmd}\n')
+                err_file.write(content)
+                err_file.write('\n\n')
+                
+            self.call_program('rm test.out')
             return None
         else:
             print("running over, running time: " + str(run_result['run_time']))
+            self.call_program('rm test.out')
             return run_result['run_time']
 
     def compile_and_run(self, cfg, graph, algo_file):
@@ -442,16 +468,75 @@ class GraphItDataCreator():
         print (" write_cfg_to_schedule over. ")
 
         # this pases in the id 0 for the configuration
-        compile_result = self.compile(cfg, algo_file, 0)
+        compile_result = self.compile(cfg, algo_file)
         if compile_result["returncode"] != 0:
             return None
         
         print (" compile_result over. ")
-        return self.run_precompiled(cfg, compile_result, graph, 0)
+        return self.run_precompiled(cfg, compile_result, graph, algo_file)
 
+
+    def compile_and_run_v2(self, cfg):
+        """                                                                          
+        Compile and run a given configuration then                                   
+        return performance                                                           
+        """
+        self.reset_flag()   # 重置一些标志位
+        
+        if cfg['NUMA'] == 'false':
+            self.enable_NUMA_tuning = False
+        if cfg['parallelization'] == 'serial':
+            self.enable_parallel_tuning = False
+
+        # only use NUMA when we are tuning parallel and NUMA schedules
+        # if self.enable_NUMA_tuning and self.enable_parallel_tuning and cfg['NUMA'] == 'static-parallel':
+        if self.enable_NUMA_tuning and self.enable_parallel_tuning and cfg['NUMA'] != 'false':
+            if cfg['direction'] == 'DensePull' or cfg['direction'] == 'SparsePush-DensePull' or cfg['direction'] == 'DensePull-SparsePush':
+                if int(cfg['numSSG']) > 1:
+                    self.use_NUMA = True
+
+        # if cfg['bucket_update_strategy'] == "eager_priority_update" or cfg['bucket_update_strategy'] == "eager_priority_update_with_merge":
+        #     self.use_eager_update = True
+        
+        # converts the configuration into a schedule
+        returncode = self.write_cfg_to_schedule(cfg)
+        
+        # write_cfg_to_schedule error return None
+        if returncode == -1:
+            return None
+        
+        print (" write_cfg_to_schedule over. ")
+
+        for algo_file_name in algo_list:
+            output_file_name = output_file_dir + algo_file_name + '_output.txt'
+            algo_file_path = algo_file_dir+algo_file_name
+
+            # this pases in the id 0 for the configuration
+            compile_result = self.compile(cfg, algo_file_path)
+            if compile_result["returncode"] != 0:
+                return None
+                    
+            print (" compile_result over. ")
+                            
+            for graph in graph_list:
+                print(f"\n>>>>>>>>>>> algo: {algo_file_name}  graph: {graph} <<<<<<<<<<<<<<")
+                
+                graph_file_path = graph_file_dir + graph + '/' + graph + '.el'
+
+                result_time = self.run_precompiled(cfg, compile_result, graph_file_path, 0)
+
+                if result_time != None:
+                    with open(output_file_name, 'a') as file:
+                        output_sche = f'{graph} '
+                        for key, value in cfg.items():
+                            output_sche += f"{value}, "
+                        file.write(
+                            output_sche+str(result_time)+'\n')
+                else:
+                  exit(1)
+        
 
 if __name__ == '__main__':
-    output_file_dir = "/data/zhr_data/AutoGraph/dataset/"
 
     # file = open(output_file_name, 'w')
     data_collector = GraphItDataCreator()
@@ -465,64 +550,113 @@ if __name__ == '__main__':
     
     choice_num = 1
     
-    start = False
     # for i in range(0, max_num_segments, 2):
     for i in [0, 5, 10, 15, 20]:
         cfg['numSSG'] = i
         
-        for NUMA_option in config_NUMA:     # numa 编译有问题
-            cfg['NUMA'] = NUMA_option
-                            
-            if cfg['numSSG'] == 5 and cfg['NUMA'] == 'static-parallel':     # 这之前都采集过了
-                start = True
-            if not start:
-                continue
+        # for NUMA_option in config_NUMA:     # numa 编译有问题
+        #     cfg['NUMA'] = NUMA_option
             
-            if cfg['NUMA'] != 'false':      # numa 编译有问题
-                continue
-            
-            for direction_option in config_direction:
-                cfg['direction'] = direction_option
+        if cfg['NUMA'] != 'false':      # numa 编译有问题
+            continue
+        
+        for direction_option in config_direction:
+            cfg['direction'] = direction_option
 
-                for parallelization_option in config_parallelization:
-                    cfg['parallelization'] = parallelization_option
+            for parallelization_option in config_parallelization:
+                cfg['parallelization'] = parallelization_option
 
-                    for DenseVertexSet_option in config_DenseVertexSet:
-                        cfg['DenseVertexSet'] = DenseVertexSet_option
+                for DenseVertexSet_option in config_DenseVertexSet:
+                    cfg['DenseVertexSet'] = DenseVertexSet_option
 
-                        # for bucket_update_strategy_option in config_bucket_update_strategy:
-                        #     cfg['bucket_update_strategy'] = bucket_update_strategy_option
-                        
-                        print(f"==================================== choiceNum {choice_num} ========================================")
-                        choice_num += 1
-                        
-                        passed = data_collector.schedule_fliter(cfg)
-                        if passed: # 如果能够通过过滤，则调度组合有效
-                            print(f"schedule pass: {cfg}")
+                    # for bucket_update_strategy_option in config_bucket_update_strategy:
+                    #     cfg['bucket_update_strategy'] = bucket_update_strategy_option
+                    
+                    print(f"==================================== choiceNum {choice_num} ========================================")
+                    choice_num += 1
+                    
+                    passed = data_collector.schedule_fliter(cfg)
+                    if passed: # 如果能够通过过滤，则调度组合有效
+                        print(f"schedule pass: {cfg}")
+
+                        data_collector.compile_and_run_v2(cfg)
+                                        
+                    else:   # data_collector.schedule_fliter(cfg) 不通过
+                        print(f"schedule unsupported: {cfg}")
+                    print(f"==================================== choiceNum over ========================================\n")
+
+
+    # 下面是用之前的compile_and_run()函数，现在用的是上面的compile_and_run_v2()函数
+    # # file = open(output_file_name, 'w')
+    # data_collector = GraphItDataCreator()
+    # cfg =  {
+    #     'direction': 'SparsePush',
+    #     'parallelization': 'serial',
+    #     'DenseVertexSet': 'boolean-array',
+    #     'NUMA': 'false',
+    #     'numSSG': 0
+    # }
+    
+    # choice_num = 1
+    
+    # start = False
+    # # for i in range(0, max_num_segments, 2):
+    # for i in [0, 5, 10, 15, 20]:
+    #     cfg['numSSG'] = i
+        
+    #     for NUMA_option in config_NUMA:     # numa 编译有问题
+    #         cfg['NUMA'] = NUMA_option
                             
-                            for algo_file_name in algo_list:
-                                output_file_name = output_file_dir + algo_file_name + '_output.txt'
+    #         if cfg['numSSG'] == 5 and cfg['NUMA'] == 'static-parallel':     # 这之前都采集过了
+    #             start = True
+    #         if not start:
+    #             continue
+            
+    #         if cfg['NUMA'] != 'false':      # numa 编译有问题
+    #             continue
+            
+    #         for direction_option in config_direction:
+    #             cfg['direction'] = direction_option
+
+    #             for parallelization_option in config_parallelization:
+    #                 cfg['parallelization'] = parallelization_option
+
+    #                 for DenseVertexSet_option in config_DenseVertexSet:
+    #                     cfg['DenseVertexSet'] = DenseVertexSet_option
+
+    #                     # for bucket_update_strategy_option in config_bucket_update_strategy:
+    #                     #     cfg['bucket_update_strategy'] = bucket_update_strategy_option
+                        
+    #                     print(f"==================================== choiceNum {choice_num} ========================================")
+    #                     choice_num += 1
+                        
+    #                     passed = data_collector.schedule_fliter(cfg)
+    #                     if passed: # 如果能够通过过滤，则调度组合有效
+    #                         print(f"schedule pass: {cfg}")
+                            
+    #                         for algo_file_name in algo_list:
+    #                             output_file_name = output_file_dir + algo_file_name + '_output.txt'
                                 
-                                for graph in graph_list:
-                                    print(f"\n>>>>>>>>>>> algo: {algo_file_name}  graph: {graph} <<<<<<<<<<<<<<")
+    #                             for graph in graph_list:
+    #                                 print(f"\n>>>>>>>>>>> algo: {algo_file_name}  graph: {graph} <<<<<<<<<<<<<<")
 
-                                    algo_file_path = algo_file_dir+algo_file_name
-                                    graph_file_path = graph_file_dir + graph + '/' + graph + '.el'
+    #                                 algo_file_path = algo_file_dir+algo_file_name
+    #                                 graph_file_path = graph_file_dir + graph + '/' + graph + '.el'
                                     
-                                    result_time = data_collector.compile_and_run(cfg, graph_file_path, algo_file_path)
+    #                                 result_time = data_collector.compile_and_run(cfg, graph_file_path, algo_file_path)
 
-                                    if result_time == None:
-                                        with open('/data/zhr_data/AutoGraph/dataset/error_options/error_options.txt', 'a') as err_file:
-                                           err_file.write(f'{cfg} {algo_file_name} {graph}\n')
-                                        continue
-                                    else:
-                                        with open(output_file_name, 'a') as file:
-                                            output_sche = f'{graph} '
-                                            for key, value in cfg.items():
-                                                output_sche += f"{value}, "
-                                            file.write(
-                                                output_sche+str(result_time)+'\n')
+    #                                 if result_time == None:
+    #                                     with open('/home/zhuhr/AutoGraph/graphit/autotune/costmodel_dataset/error_options/error_options.txt', 'a') as err_file:
+    #                                        err_file.write(f'{cfg} {algo_file_name} {graph}\n')
+    #                                     continue
+    #                                 else:
+    #                                     with open(output_file_name, 'a') as file:
+    #                                         output_sche = f'{graph} '
+    #                                         for key, value in cfg.items():
+    #                                             output_sche += f"{value}, "
+    #                                         file.write(
+    #                                             output_sche+str(result_time)+'\n')
                                             
-                        else:   # data_collector.schedule_fliter(cfg) 不通过
-                            print(f"schedule unsupported: {cfg}")
-                        print(f"==================================== choiceNum over ========================================\n")
+    #                     else:   # data_collector.schedule_fliter(cfg) 不通过
+    #                         print(f"schedule unsupported: {cfg}")
+    #                     print(f"==================================== choiceNum over ========================================\n")

@@ -3,4 +3,6 @@
 **/*.tar.gz
 # **/*.pth
 **/__pycache__/
-    
+**/*.pth
+**/*.pkl
+**/*.log

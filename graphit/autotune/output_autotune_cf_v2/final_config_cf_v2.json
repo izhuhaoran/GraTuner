@@ -1,0 +1,1 @@
+{"direction": "DensePull", "parallelization": "dynamic-vertex-parallel", "numSSG": 24, "DenseVertexSet": "bitvector", "delta": 653781, "bucket_update_strategy": "lazy_priority_update"}

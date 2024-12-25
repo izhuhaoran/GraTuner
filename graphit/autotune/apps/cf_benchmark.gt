@@ -43,6 +43,6 @@ func main()
         end
         var elapsed_time : double = stopTimer();
         print "elapsed time: ";
-        print elapsed_time
+        print elapsed_time;
     end
 end

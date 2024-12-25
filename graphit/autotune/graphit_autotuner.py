@@ -12,6 +12,19 @@ from opentuner import MeasurementInterface
 from opentuner import Result
 from sys import exit
 import argparse
+import time
+
+all_time = 0.0
+write_cfg_time = 0.0
+compile_time = 0.0
+run_time = 0.0
+run_time_once = 0.0
+exec_time = 0.0
+exec_time_once = 0.0
+
+max_time = 10000
+
+time_0 = time.time()
 
 py_graphitc_file = "../build/bin/graphitc.py"
 serial_compiler = "g++"
@@ -79,6 +92,86 @@ class GraphItTuner(MeasurementInterface):
 
         return manipulator
 
+    def schedule_fliter(self, cfg) -> bool:
+
+        fliter_pass = True
+        
+        NUMA_enable = False   # 使用numa的要求（计算方向和图划分）是否满足
+        NUMA_use = False     # cfg是否使用numa
+        
+        edge_aware_par_use = False  # 是否使用边感知并行
+        edge_aware_par_enable = False # 边感知并行条件是否达到
+        
+        eager_priority_update = False
+        
+        bitvector_enble = False     # bitvector使用条件是否达到
+        bitvector_use = False       # 是否使用bitvector
+        
+        SSG_enble = False
+        SSG_use = False
+        
+        if cfg['bucket_update_strategy'] != 'lazy_priority_update':
+            eager_priority_update = True
+        
+        if int(cfg['numSSG']) > 1:      # 使用numa时只能使用pull方向或者push-pull方向，且图划分数必须大于1
+            SSG_use = True
+        
+        if cfg['direction'] == 'DensePull' or cfg['direction'] == 'SparsePush-DensePull' or cfg['direction'] == 'DensePull-SparsePush':
+            edge_aware_par_enable = True    # 边感知并行只在pull方向或者push-pull方向有效
+            
+            bitvector_enble = True          # bitvector也只在pull方向或者push-pull方向有效
+            
+            SSG_enble = True                # SSG也只在pull方向或者push-pull方向有效
+            
+            if SSG_use and cfg['parallelization'] != 'serial':      # 使用numa时必须允许并行，且只能使用pull方向或者push-pull方向，且图划分数必须大于1, 
+                NUMA_enable = True
+        
+        # 当使用SSG但SSG的使用条件不满足时，过滤不通过
+        if SSG_use == True and SSG_enble == False:
+            print(f'schedule_fliter: ssg use enable unpass')
+            fliter_pass = False
+            return False
+        
+        if 'NUMA' in cfg:
+            if cfg['NUMA'] == 'static-parallel' or cfg['NUMA'] == 'dynamic-parallel':
+                NUMA_use = True
+        
+        # 当使用numa，但num使用要求不满足时，过滤不通过
+        if NUMA_use == True and NUMA_enable == False:
+            print(f'schedule_fliter: numa use enable unpass')
+            fliter_pass = False
+            return False
+        
+        if cfg['parallelization'] == 'edge-aware-dynamic-vertex-parallel':
+            edge_aware_par_use = True
+        
+        # 当使用numa时，不能使用边感知的并行，过滤不通过
+        if edge_aware_par_use == True and NUMA_use == True:
+            print(f'schedule_fliter: numa & edge_aware_par_use unpass')
+            fliter_pass = False
+            return False
+            
+        # 当使用边感知的并行但边感知的并行的使用条件不满足时，过滤不通过
+        if edge_aware_par_use == True and edge_aware_par_enable == False:
+            print(f'schedule_fliter: edge_aware_par use enable unpass')
+            fliter_pass = False
+            return False
+        
+        if cfg['DenseVertexSet'] == 'bitvector':
+            bitvector_use = True
+        
+        # 当使用bitvector但bitvector的使用条件不满足时，过滤不通过
+        if bitvector_use == True and bitvector_enble == False:
+            print(f'schedule_fliter: bitvector use enable unpass')
+            fliter_pass = False
+            return False
+
+        if eager_priority_update:
+            if cfg['direction'] != 'SparsePush':
+                fliter_pass = False
+        
+        return fliter_pass
+    
     #configures parallelization commands
     def write_par_schedule(self, cfg, new_schedule, direction):
         use_evp = False;
@@ -195,7 +288,6 @@ class GraphItTuner(MeasurementInterface):
         Compile a given configuration in parallel                                    
         """
 
-
         #compile the schedule file along with the original algorithm file
         compile_graphit_cmd = 'python ' + py_graphitc_file +  ' -a  {algo_file} -f {schedule_file} -i ../include/ -l ../build/lib/libgraphitlib.a  -o test.cpp'.format(algo_file=self.args.algo_file, schedule_file=self.new_schedule_file_name) 
 
@@ -225,7 +317,7 @@ class GraphItTuner(MeasurementInterface):
     def parse_running_time(self, log_file_name='test.out'):
         """Returns the elapsed time only, from the HPL output file"""
 
-        min_time = 10000
+        min_time = max_time
 
         with open(log_file_name) as f:
             content = f.readlines()
@@ -246,7 +338,7 @@ class GraphItTuner(MeasurementInterface):
         """                                                                          
         Run a compile_result from compile() sequentially and return performance      
         """
-
+        # start_t = time.time()
         cfg = desired_result.configuration.data
         
         if compile_result['returncode'] != 0:
@@ -285,9 +377,20 @@ class GraphItTuner(MeasurementInterface):
         else:
             val = self.parse_running_time();
         
-        self.call_program('rm test.out')
+        self.call_program('rm test.out')       
+         
+        # end_t = time.time()
+        
         print ("run result: " + str(run_result))
         print ("running time: " + str(val))
+
+        # global run_time_once
+        # run_time_once = end_t - start_t
+        # print(f'run_time_once: {run_time_once}')
+        
+        global exec_time, exec_time_once
+        exec_time = exec_time + val
+        exec_time_once = val
 
         if run_result['timeout'] == True:
             print ("Timed out after " + str(self.args.runtime_limit) + " seconds")
@@ -302,15 +405,13 @@ class GraphItTuner(MeasurementInterface):
         else:
             return opentuner.resultsdb.models.Result(time=val)
             
-        
-
 
     def compile_and_run(self, desired_result, input, limit):
         """                                                                          
         Compile and run a given configuration then                                   
         return performance                                                           
         """
-        print "input graph: " + self.args.graph
+        print("input graph: " + self.args.graph)
 
         cfg = desired_result.configuration.data
 
@@ -324,19 +425,52 @@ class GraphItTuner(MeasurementInterface):
 
         if cfg['bucket_update_strategy'] == "eager_priority_update" or cfg['bucket_update_strategy'] == "eager_priority_update_with_merge":
             self.use_eager_update = True
+        
+        if not self.schedule_fliter(cfg):
+            with open('/home/zhuhaoran/AutoGraph/AutoGraph/graphit/autotune/output_autotune/cfg_no_pass.txt', '+a') as fw_cfg:
+                fw_cfg.write(str(cfg)+'\n')
+            return opentuner.resultsdb.models.Result(time=max_time)
+        
+        t1 = time.time()
         # converts the configuration into a schedule
         self.write_cfg_to_schedule(cfg)
-        
+            
+        t2 = time.time()
         # this pases in the id 0 for the configuration
         compile_result = self.compile(cfg, 0)
         # print "compile_result: " + str(compile_result)
-        return self.run_precompiled(desired_result, input, limit, compile_result, 0)
+        t3 = time.time()
+        result_ = self.run_precompiled(desired_result, input, limit, compile_result, 0)
+        t4 = time.time()
+        
+        global write_cfg_time
+        global compile_time
+        global run_time
+        global all_time
+        
+        write_cfg_time = write_cfg_time + t2 - t1
+        compile_time = compile_time + t3 - t2
+        run_time = run_time + t4 - t3
+        all_time = t4 - time_0
+        
+        with open('/home/zhuhaoran/AutoGraph/AutoGraph/graphit/autotune/output_autotune/cfg.txt', '+a') as fw_cfg:
+            fw_cfg.write(str(cfg)+'\n')
+        
+        with open('/home/zhuhaoran/AutoGraph/AutoGraph/graphit/autotune/output_autotune/time_log_iter.txt', '+a') as fw_time:
+            fw_time.write(f"write_cfg_time: {t2 - t1}, compile_time: {t3 - t2}, run_time: {t4 - t3}, exec_time: {exec_time_once}\n")
+        
+        with open('/home/zhuhaoran/AutoGraph/AutoGraph/graphit/autotune/output_autotune/time_log_all.txt', '+a') as fw_time:
+            fw_time.write(f"all_time: {all_time}, write_cfg_time: {write_cfg_time}, compile_time: {compile_time}, run_time: {run_time}, exec_time: {exec_time}\n")
+
+        print('one case over.\n\n')
+
+        return result_
 
 
     def save_final_config(self, configuration):
         """called at the end of tuning"""
         print ('Final Configuration:', configuration.data)
-        self.manipulator().save_to_file(configuration.data,'final_config.json')
+        self.manipulator().save_to_file(configuration.data,'final_config.json', mode='+a')
 
 
 
@@ -356,5 +490,17 @@ if __name__ == '__main__':
     parser.add_argument('--killed_process_report_runtime_limit', type=int, default=0, help='reports runtime_limit when a process is killed by the shell. 0 for disable (default), 1 for enable')
     args = parser.parse_args()
     # pass the argumetns into the tuner
-    GraphItTuner.main(args)
+
+    all_time = 0.0
+    write_cfg_time = 0.0
+    compile_time = 0.0
+    run_time = 0.0
+    exec_time = 0.0
     
+    time_0 = time.time()
+    GraphItTuner.main(args)
+    t2 = time.time()
+    
+    all_time = t2 - time_0
+    with open('/home/zhuhaoran/AutoGraph/AutoGraph/graphit/autotune/output_autotune/time_log.txt', '+a') as fw_time:
+        fw_time.write(f"all_time: {all_time}, write_cfg_time: {write_cfg_time}, compile_time: {compile_time}, run_time: {run_time}, exec_time: {exec_time}\n")
