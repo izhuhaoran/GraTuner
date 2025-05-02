@@ -1,0 +1,840 @@
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'FUSED', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'ENABLED', 'frontier_output_0': 'UNFUSED_BITMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BOOLMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+sssp.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt youtube-u-growth ./test /home/zhuhaoran/AutoGraph/graphs/youtube-u-growth/youtube-u-growth.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt dblp_coauthor ./test /home/zhuhaoran/AutoGraph/graphs/dblp_coauthor/dblp_coauthor.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt soc-LiveJournal1 ./test /home/zhuhaoran/AutoGraph/graphs/soc-LiveJournal1/soc-LiveJournal1.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt orkut-links ./test /home/zhuhaoran/AutoGraph/graphs/orkut-links/orkut-links.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+
+cc.gt roadNet-CA ./test /home/zhuhaoran/AutoGraph/graphs/roadNet-CA/roadNet-CA.el 1 > test.out
+{'kernel_fusion': 'DISABLED', 'LB_0': 'TWC', 'direction_0': 'PULL', 'dedup_0': 'DISABLED', 'frontier_output_0': 'UNFUSED_BOOLMAP', 'pull_rep_0': 'BITMAP', 'EB_0': 'None', 'BS_0': 0}
+return_code: 255
+stderr: 
+stdout: 
+
+

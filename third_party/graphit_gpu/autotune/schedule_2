@@ -1,0 +1,10 @@
+schedule:
+SimpleGPUSchedule s1;
+s1.configLoadBalance(WM);
+s1.configFrontierCreation(UNFUSED_BOOLMAP);
+s1.configDirection(PULL, BOOLMAP);
+s1.configDeduplication(ENABLED);
+program->applyGPUSchedule("s0:s1", s1);
+SimpleGPUSchedule s0;
+s0.configKernelFusion(DISABLED);
+program->applyGPUSchedule("s0", s0);

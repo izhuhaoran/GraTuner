@@ -1,0 +1,11 @@
+**/build/
+**/*.tar.bz2
+**/*.tar.gz
+# **/*.pth
+**/__pycache__/
+**/*.pth
+**/*.pkl
+**/*.log
+**/.vscode/
+**/GraTuner_tests_*/
+**/compiled_exe/

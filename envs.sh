@@ -1,0 +1,1 @@
+export PYTHONPATH=/home/zhuhaoran/AutoGraph/GraTuner:$PYTHONPATH

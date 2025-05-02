@@ -1,0 +1,5 @@
+dgl==1.1.2+cu118
+numpy==1.24.1
+pandas==2.2.3
+torch==2.0.1
+packaging==24.2

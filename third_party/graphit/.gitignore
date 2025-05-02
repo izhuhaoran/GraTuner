@@ -1,0 +1,14 @@
+/Debug/
+.DS_Store
+.cproject
+.project
+.settings/
+.idea/
+build/
+cmake-build-debug/
+
+**/graphs/*
+!**/graphs/*.py
+
+autotune/test*
+autotune/*.out
